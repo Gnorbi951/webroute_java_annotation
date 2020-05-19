@@ -15,7 +15,8 @@ public class Main {
             e.printStackTrace();
         }
         assert server != null;
-        server.createContext("/test", new MyHandler());
+        server.createContext("/test", new TestHandler());
+        server.createContext("/", new IndexHandler());
         server.setExecutor(null); // creates a default executor
         server.start();
     }

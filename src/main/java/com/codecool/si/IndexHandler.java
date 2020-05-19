@@ -4,16 +4,15 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 
-public class MyHandler implements HttpHandler {
+public class IndexHandler implements HttpHandler {
 
     public void handle(HttpExchange t) throws IOException {
         //InputStream is = t.getRequestBody();
         //read(is); // .. read the request body
-        String response = "This is the response";
-        t.sendResponseHeaders(200, response.length());
+        String response = "<h1>This is the index route</h1>";
+        t.sendResponseHeaders(200, response.getBytes().length);
         OutputStream os = t.getResponseBody();
         os.write(response.getBytes());
         os.close();
